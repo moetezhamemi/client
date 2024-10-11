@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
 import { client } from '../model/client.model';
+import { Type } from '../model/type.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
   clients : client[];
-  client! : client
+  client! : client;
+  types : Type[];
   constructor() {
-    this.clients = [
-      { idclient : 4, nomclient : "tez", emailclient : "aaaeee@gmail.com", dateinscription: new Date("01/14/2011"), adresseclient : "25,ruetezz"},
-      { idclient : 2, nomclient : "ali", emailclient : "aaazz@gmail.com", dateinscription: new Date("01/14/2015"), adresseclient : "25,rueali"},
-      { idclient : 3, nomclient : "salah", emailclient : "aaabbb@gmail.com", dateinscription: new Date("01/16/2020"), adresseclient : "25,ruesalah"}
-    ];
+    this.types = [ {idtype : 1, nomtype : "VIP"},
+      {idtype : 2, nomtype : "Normal"}]; 
+      this.clients = [
+        { idclient : 1, nomclient : "tez", emailclient : "jjj@gmail.com",
+        dateinscription : new Date("01/10/2011"),adresseclient : "daar", type : {idtype : 1, nomtype : "Premium"}},
+        { idclient : 2, nomclient : "ali", emailclient : "kkk@gmail.com",
+          dateinscription : new Date("01/8/2011"),adresseclient : "dar", type : {idtype : 2, nomtype : "Normal"}},
+          { idclient : 3, nomclient : "salah", emailclient : "lll@gmail.com",
+            dateinscription : new Date("01/12/2011"),adresseclient : "maison", type : {idtype : 3, nomtype : "Normal"}},
+        ];
+        
    }
    listeclients():client[]{
     return this.clients;
@@ -54,5 +63,13 @@ export class ClientService {
     this.ajouterclient(c);
     this.trierclients();
     }
+    listetype(): Type[] {
+      return this.types;
+      }
+      consultertype(id:number): Type{
+        return this.types.find(cat => cat.idtype == id)!;
+        }
+      
+      
     
 }

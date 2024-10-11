@@ -8,6 +8,7 @@
                     <th>EMAIL</th>
                     <th>Date Inscription</th>
                     <th>adresse</th>
+                    <th>type</th>
                 </tr>
                 <tbody *ngFor="let client of clients">
                     <tr>
@@ -16,6 +17,7 @@
                         <td>{{client.emailclient}}</td>
                         <td>{{client.dateinscription | date:'dd/MM/yyyy'}}</td>
                         <td>{{client.adresseclient}}</td>
+                        <td>{{client.type.nomtype}}</td>
                         <td><a class="btn btn-danger" (click)="supprimerclient(client)">Supprimer</a></td>
                         <td><a class="btn btn-success" [routerLink]="['/updateclient',client.idclient]">Modifier</a></td>
                     </tr>
